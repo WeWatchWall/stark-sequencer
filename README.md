@@ -1,4 +1,4 @@
-# Soft Sequencer in TypeScript 
+# Soft Sequencer in TypeScript
 
 [![Build and test status](https://github.com/WeWatchWall/stark-sequencer/workflows/Lint%20and%20test/badge.svg)](https://github.com/WeWatchWall/stark-sequencer/actions?query=workflow%3A%22Lint+and+test%22)
 
@@ -28,7 +28,7 @@ StarkSequencer.init({options});
 let mockTrackTime = 0;
 let monitor = StarkSequencer.monitor({
     length: 30e3,  // Used for automatic destruction at the end.
-    pollCallback: () => mockTrackTime,
+    pollCallback: () => mockTrackTime,  // Get the time from the track.
     pollInterval: 2e2,  // In milliseconds
     diffInterval: 30,  // In milliseconds
     isForceUpdate: true,  // Update the store's time even if the polled time matches the monitored time.
@@ -37,15 +37,16 @@ let monitor = StarkSequencer.monitor({
 
 // Execute mutations on the Vuex store.
 let executor = StarkSequencer.execute({
-    init: {x: 0, y: 0},
+    init: { x: 0, y: 0 },  // The initial object state.
+    // Events sequence.
     events: [
-      {time: 200, value: {x: 20, y: 0}},
-      {time: 400, value: {x: 20, y: 40}},
-      {time: 600, value: {x: 40, y: 40}},
+      {time: 200, value: { x: 20, y: 0 }},
+      {time: 400, value: { x: 20, y: 40 }},
+      {time: 600, value: { x: 40, y: 40 }},
       ...etc
     ],
-    pollInterval: 2e2,
-    isRepeat: true
+    pollInterval: 2e2,  // In milliseconds.
+    isRepeat: true  // Control for looping.
   });
   
 // Watch for changes, can use a framework like Vue.
