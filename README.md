@@ -38,6 +38,7 @@ let monitor = StarkSequencer.monitor({
 // Execute mutations on the Vuex store.
 let executor = StarkSequencer.execute({
     init: { x: 0, y: 0 },  // The initial object state.
+    
     // Events sequence.
     events: [
       {time: 200, value: { x: 20, y: 0 }},
@@ -45,7 +46,9 @@ let executor = StarkSequencer.execute({
       {time: 600, value: { x: 40, y: 40 }},
       ...etc
     ],
-    pollInterval: 2e2,  // In milliseconds. Optional, min 15ms. Default = 15ms < min time between events / 2 < 150ms.
+    
+    // In milliseconds. Optional, min 15ms. Default = 15ms < min time between events / 2 < 150ms.
+    pollInterval: 2e2,
     isRepeat: true  // Control for looping.
   });
   
