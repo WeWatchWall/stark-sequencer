@@ -53,8 +53,7 @@ export class Executor {
     sorter.sort(this.arg.events);
 
     this.validateNew();
-    this.startTime = Date.now() + this.arg.offsetPointer.offset;
-
+    this.startTime = this.argValid.start || Date.now() + this.arg.offsetPointer.offset;
 
     if (this.argValid.pollInterval < minPoll) { this.argValid.pollInterval = minPoll; }
     else if (!this.argValid.pollInterval) {
@@ -105,6 +104,8 @@ export class Executor {
     let poll = _.throttle(function () {
       let currentTime = Date.now() + self.arg.offsetPointer.offset;
       let time = Math.floor(currentTime - self.startTime);
+
+      if (time < 0) { return; }
 
       let newIndex = binarySearch(self.promises, { time }, Executor.compareCallback) + 1;
       for (let index = self.promisesIndex; index < newIndex; index++) {
@@ -188,6 +189,7 @@ export class Executor {
       offset: Number,
       numSamples: Number
     }),
+    start: [Number],
     pollInterval: [Number],
     isRepeat: Boolean,
     buffer: Number

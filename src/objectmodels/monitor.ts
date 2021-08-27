@@ -33,7 +33,7 @@ export class Monitor {
 
   init() {
     this.validateNew();
-    this.startTime = Date.now() + this.arg.offsetPointer.offset;
+    this.startTime = this.argValid.start || Date.now() + this.arg.offsetPointer.offset;
 
     if (this.argValid.pollInterval < minPoll) { this.argValid.pollInterval = minPoll; }
 
@@ -63,6 +63,9 @@ export class Monitor {
     var self = this;
     let loadInternal = _.throttle(function () {
       let currentTime = Date.now() + self.arg.offsetPointer.offset;
+      
+      if (currentTime - self.startTime < 0) { return; }
+      
       let polledTime = self.argValid.pollCallback();
       
       if (self.state.state.isEnd) { self.delete(); return; }
@@ -115,6 +118,7 @@ export class Monitor {
       offset: Number,
       numSamples: Number
     }),
+    start: [Number],
     pollInterval: Number,
     diffInterval: Number,
     isForceUpdate: Boolean,

@@ -28,6 +28,7 @@ let mockTrackTime = 0;
 let monitor = StarkSequencer.monitor({
     length: 30e3,  // Used for automatic destruction at the end. Default: 10 min.
     pollCallback: () => mockTrackTime,  // Get the time from the track.
+    start: Date.now() + 5e3, // Start at the synched time. Default: starts immediately.
     pollInterval: 2e2,  // In milliseconds, min 15ms. Default: 100ms.
     diffInterval: 30,  // In milliseconds. Default: 100ms.
 
@@ -37,6 +38,7 @@ let monitor = StarkSequencer.monitor({
     isForceUpdate: true,
     isRepeat: false   // Control for looping. Default: false.
   });
+  // The user can now access the Vuex store through monitor.state without calling load().
 
 // Execute mutations on the Vuex store.
 let executor = StarkSequencer.execute({
@@ -49,14 +51,15 @@ let executor = StarkSequencer.execute({
       {time: 600, value: { x: 40, y: 40 }},
       ...etc
     ],
-    
     buffer: 50, // Number of buffered events. Default: 100.
+    start: Date.now() + 5e3, // Start at the synched time. Default: starts immediately.
 
     // In milliseconds. Optional, min 15ms. 
     // Default = 15ms < min time between events / 2 < 150ms.
     pollInterval: 2e2,
     isRepeat: true  // Control for looping. Default: false.
   });
+// The user can now access the Vuex store through executor.state without calling load().
 ```
 
 ## Results
