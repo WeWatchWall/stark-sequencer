@@ -2,7 +2,7 @@
 
 [![Build and test status](https://github.com/WeWatchWall/stark-sequencer/workflows/Lint%20and%20test/badge.svg)](https://github.com/WeWatchWall/stark-sequencer/actions?query=workflow%3A%22Lint+and+test%22)
 
-Library that allows users to schedule a list of changes to a Vuex(v.3) store's state. Can optionally sync with a server that is running [timesync](https://www.npmjs.com/package/timesync). An esm module written in TypeScript, tested in the browser but it should also run on the server.
+Library that allows users to schedule a list of changes to a [Vuex(v.3)](https://vuex.vuejs.org/api/) store's state. Can optionally sync with a server that is running [timesync](https://www.npmjs.com/package/timesync). An esm module written in TypeScript, tested in the browser but it should also run on the server.
 
 ## Getting Started
 
