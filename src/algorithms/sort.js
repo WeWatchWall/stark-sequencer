@@ -20,7 +20,9 @@ export default class Sort {
    */
   static initSortingCallbacks(originalCallbacks) {
     const callbacks = originalCallbacks || {};
-    const stubCallback = () => {};
+    const stubCallback = () => {
+      // Fallback, do nothing.
+    };
 
     callbacks.compareCallback = callbacks.compareCallback || undefined;
     callbacks.visitingCallback = callbacks.visitingCallback || stubCallback;

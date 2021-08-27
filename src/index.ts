@@ -1,5 +1,4 @@
-
-const timesync = require('timesync');
+import timesync from 'timesync';
 import config from '../config';
 
 import { Executor as ExecutorService } from "./services/executor";
