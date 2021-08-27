@@ -1,6 +1,6 @@
 {
   "name": "@wewatchwall/stark-sequencer",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A scheduler and monitor for TypeScript in soft real-time.",
   "author": "Adrian Burlacu <adrian.burlacu@live.com>",
   "repository": {
