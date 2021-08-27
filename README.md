@@ -30,7 +30,7 @@ let monitor = StarkSequencer.monitor({
     pollCallback: () => mockTrackTime,  // Get the time from the track.
     start: Date.now() + 5e3, // Start at the synched time. Default: starts immediately.
     pollInterval: 2e2,  // In milliseconds, min 15ms. Default: 100ms.
-    diffInterval: 30,  // In milliseconds. Default: 100ms.
+    diffInterval: 30,  // Margin of error in milliseconds. Default: 100ms.
 
     // Update the store's time even if 
     // the polled time matches the monitored time.
