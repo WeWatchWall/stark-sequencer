@@ -38,7 +38,6 @@ let monitor = StarkSequencer.monitor({
     isForceUpdate: true,
     isRepeat: false   // Control for looping. Default: false.
   });
-  // The user can now access the Vuex store through monitor.state without calling load().
 
 // Execute mutations on the Vuex store.
 let executor = StarkSequencer.execute({
@@ -59,7 +58,6 @@ let executor = StarkSequencer.execute({
     pollInterval: 2e2,
     isRepeat: true  // Control for looping. Default: false.
   });
-// The user can now access the Vuex store through executor.state without calling load().
 ```
 
 ## Results
