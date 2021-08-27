@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  </head>
+  <body>
+    <div>Please check the console.</div>
+    <script type="module">
+      import { StarkSequencer } from "./dist/index.js";
+      
+      StarkSequencer.init({isSync: true});
+
+      let currentTime = Date.now();
+
+      var events = [];
+      for (let index = 0; index < 300; index++) {
+        events.push({value: {value: 1e5 + (index + 1) * 30}, time: (index + 1) * 300});
+      }
+      events.reverse();
+
+      let executor = StarkSequencer.execute({
+        events: events,
+        pollInterval: 2e2,
+        isRepeat: true,
+      });
+
+      executor.subscribe((mutation, state) => {
+        console.log(`Time: ${state.updateTime - currentTime}, Value: ${state.value.value}`);
+      });
+      
+    </script>
+  </body>
+</html>
