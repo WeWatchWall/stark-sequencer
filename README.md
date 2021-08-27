@@ -31,14 +31,16 @@ let monitor = StarkSequencer.monitor({
     pollCallback: () => mockTrackTime,  // Get the time from the track.
     pollInterval: 2e2,  // In milliseconds, min 15ms.
     diffInterval: 30,  // In milliseconds.
-    isForceUpdate: true,  // Update the store's time even if the polled time matches the monitored time.
+
+    // Update the store's time even if the polled time matches the monitored time.
+    isForceUpdate: true,
     isRepeat: false  // Control for looping.
   });
 
 // Execute mutations on the Vuex store.
 let executor = StarkSequencer.execute({
     init: { x: 0, y: 0 },  // The initial object state.
-    
+
     // Events sequence.
     events: [
       {time: 200, value: { x: 20, y: 0 }},
