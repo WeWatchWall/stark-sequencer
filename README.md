@@ -74,7 +74,10 @@ let currentTime = Date.now();
 monitor.subscribe((mutation, state) => {
   mockTrackTime = state.time;  // This would scrub the media in a real use case.
 
-  console.log(`Time: ${state.updateTime - currentTime}, Value: ${mockTrackTime}`);
+  // If you enabled sync, an updated offset value in ms can be accessed here.
+  let offset = StarkSequencer.offsetPointer.offset;
+
+  console.log(`Time: ${state.updateTime - currentTime - offset}, Value: ${mockTrackTime}`);
 });
 
 // Output
@@ -83,6 +86,10 @@ monitor.subscribe((mutation, state) => {
 // updateTime: Time of last update.
 // isEnd: Flag can be set for premature kill signal, or set when the sequence is finished.
 executor.subscribe((mutation, state) => {
-  console.log(`Time: ${state.updateTime - currentTime}, Value: ${state.value}`);
+  
+  // If you enabled sync, an updated offset value in ms can be accessed here.
+  let offset = StarkSequencer.offsetPointer.offset;
+
+  console.log(`Time: ${state.updateTime - currentTime - offset}, Value: ${state.value}`);
 });
 ```
