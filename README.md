@@ -29,8 +29,8 @@ let mockTrackTime = 0;
 let monitor = StarkSequencer.monitor({
     length: 30e3,  // Used for automatic destruction at the end.
     pollCallback: () => mockTrackTime,  // Get the time from the track.
-    pollInterval: 2e2,  // In milliseconds
-    diffInterval: 30,  // In milliseconds
+    pollInterval: 2e2,  // In milliseconds, min 15ms.
+    diffInterval: 30,  // In milliseconds.
     isForceUpdate: true,  // Update the store's time even if the polled time matches the monitored time.
     isRepeat: false  // Control for looping.
   });
@@ -45,7 +45,7 @@ let executor = StarkSequencer.execute({
       {time: 600, value: { x: 40, y: 40 }},
       ...etc
     ],
-    pollInterval: 2e2,  // In milliseconds.
+    pollInterval: 2e2,  // In milliseconds. Optional, min 15ms. Default = 15ms < min time between events / 2 < 150ms.
     isRepeat: true  // Control for looping.
   });
   
