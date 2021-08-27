@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "A scheduler and monitor for TypeScript in soft real-time.",
   "author": "Adrian Burlacu <adrian.burlacu@live.com>",
-  "private": true,
   "license": "MIT",
   "keywords": [
     "typescript",
