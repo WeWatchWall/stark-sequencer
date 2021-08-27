@@ -69,7 +69,7 @@ export class Executor {
       this.argValid.pollInterval = Math.min(maxPoll, Math.max(minPoll, Math.round(minTimespan / 2)));
     }
 
-    var self = this;
+    const self = this;
     this.state = new Vuex.Store({
       state: {
         value: this.argValid.initial,
@@ -98,16 +98,16 @@ export class Executor {
   }
 
   load() {
-    var self = this;
+    const self = this;
 
     this.loadPromises();
-    let poll = _.throttle(function () {
-      let currentTime = Date.now() + self.arg.offsetPointer.offset;
-      let time = Math.floor(currentTime - self.startTime);
+    const poll = _.throttle(function () {
+      const currentTime = Date.now() + self.arg.offsetPointer.offset;
+      const time = Math.floor(currentTime - self.startTime);
 
       if (time < 0) { return; }
 
-      let newIndex = binarySearch(self.promises, { time }, Executor.compareCallback) + 1;
+      const newIndex = binarySearch(self.promises, { time }, Executor.compareCallback) + 1;
       for (let index = self.promisesIndex; index < newIndex; index++) {
         self.promises[index].promise.resolve();
       }
@@ -127,13 +127,13 @@ export class Executor {
   }
 
   loadPromises() {
-    var self = this;
+    const self = this;
     this.promisesIndex = 0;
-    let newIndex = Math.min(this.arg.events.length, this.eventsIndex + this.argValid.buffer);
+    const newIndex = Math.min(this.arg.events.length, this.eventsIndex + this.argValid.buffer);
 
     for (let index = this.eventsIndex; index < newIndex; index++) {
-      let event = this.arg.events[index];
-      let queued = new FlatPromise();
+      const event = this.arg.events[index];
+      const queued = new FlatPromise();
 
       this.promises.push({
         time: event.time,

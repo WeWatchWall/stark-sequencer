@@ -12,14 +12,14 @@ export class StarkSequencer {
 
   static init(arg) {
     config.isSync = config.isSync === 'true';
-    let configArg = { ...config, ...arg };
+    const configArg = { ...config, ...arg };
 
     ExecutorService.offsetPointer = StarkSequencer.offsetPointer;
     MonitorService.offsetPointer = StarkSequencer.offsetPointer;
     
     if (!configArg.isSync) { return; }
 
-    var timeSync = timesync.create({
+    const timeSync = timesync.create({
       server: `${configArg.host}/${configArg.path}`,
       interval: 10000,
       delay: 500

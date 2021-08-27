@@ -18,10 +18,10 @@ export class Executor {
     this.index++;
     arg.stark_index = this.index - 1;
 
-    let executor = new ExecutorObject({ ...arg, ...{ offsetPointer: Executor.offsetPointer } }, true);
+    const executor = new ExecutorObject({ ...arg, ...{ offsetPointer: Executor.offsetPointer } }, true);
     this.executors[arg.stark_index] = executor;
 
-    var self = this;
+    const self = this;
     executor.deleteEmitter.on('delete', function () {
       self.delete(arg.stark_index);
     });

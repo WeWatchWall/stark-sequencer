@@ -18,10 +18,10 @@ export class Monitor {
     this.index++;
     arg.stark_index = this.index - 1;
 
-    let monitor = new MonitorObject({ ...arg, ...{ offsetPointer: Monitor.offsetPointer } }, true);
+    const monitor = new MonitorObject({ ...arg, ...{ offsetPointer: Monitor.offsetPointer } }, true);
     this.monitors[arg.stark_index] = monitor;
 
-    var self = this;
+    const self = this;
     monitor.deleteEmitter.on('delete', function () {
       self.delete(arg.stark_index);
     });

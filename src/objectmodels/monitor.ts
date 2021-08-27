@@ -37,7 +37,7 @@ export class Monitor {
 
     if (this.argValid.pollInterval < minPoll) { this.argValid.pollInterval = minPoll; }
 
-    var self = this;
+    const self = this;
     this.state = new Vuex.Store({
       state: {
         time: 0,
@@ -60,13 +60,13 @@ export class Monitor {
   }
 
   load() {
-    var self = this;
-    let loadInternal = _.throttle(function () {
-      let currentTime = Date.now() + self.arg.offsetPointer.offset;
+    const self = this;
+    const loadInternal = _.throttle(function () {
+      const currentTime = Date.now() + self.arg.offsetPointer.offset;
       
       if (currentTime - self.startTime < 0) { return; }
       
-      let polledTime = self.argValid.pollCallback();
+      const polledTime = self.argValid.pollCallback();
       
       if (self.state.state.isEnd) { self.delete(); return; }
   
@@ -88,7 +88,7 @@ export class Monitor {
   }
 
   save() {
-    let currentTime = Date.now() + this.arg.offsetPointer.offset;
+    const currentTime = Date.now() + this.arg.offsetPointer.offset;
     let time = currentTime - this.startTime;
     if (this.argValid.isRepeat) { time = time % this.argValid.length; }
 
