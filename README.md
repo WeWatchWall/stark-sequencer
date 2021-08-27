@@ -23,7 +23,6 @@ let options = {
   };
 StarkSequencer.init({options});
 
-
 // Monitor a time-based process like a movie or audio track.
 let mockTrackTime = 0;
 let monitor = StarkSequencer.monitor({
@@ -53,16 +52,31 @@ let executor = StarkSequencer.execute({
     pollInterval: 2e2,
     isRepeat: true  // Control for looping.
   });
-  
-// Watch for changes, can use a framework like Vue.
+```
+
+## Results
+
+Watch for changes, the user can use a framework like Vue to update the DOM.
+
+```typescript
 let currentTime = Date.now();
 
+// Output
+// time: Current prescribed and synched time.
+// startTime: Synchronized time for the beginning of the sequence.
+// updateTime: Time of last update.
+// isEnd:  Flag can be set for premature kill signal, or set when the sequence is finished.
 monitor.subscribe((mutation, state) => {
   mockTrackTime = state.time;  // This would scrub the media in a real use case.
 
   console.log(`Time: ${state.updateTime - currentTime}, Value: ${mockTrackTime}`);
 });
 
+// Output
+// value: Current state.
+// startTime: Synchronized time for the beginning of the sequence.
+// updateTime: Time of last update.
+// isEnd: Flag can be set for premature kill signal, or set when the sequence is finished.
 executor.subscribe((mutation, state) => {
   console.log(`Time: ${state.updateTime - currentTime}, Value: ${state.value}`);
 });
