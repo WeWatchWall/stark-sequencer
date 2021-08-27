@@ -26,19 +26,21 @@ StarkSequencer.init({options});
 // Monitor a time-based process like a movie or audio track.
 let mockTrackTime = 0;
 let monitor = StarkSequencer.monitor({
-    length: 30e3,  // Used for automatic destruction at the end.
+    length: 30e3,  // Used for automatic destruction at the end. Default: 10 min.
     pollCallback: () => mockTrackTime,  // Get the time from the track.
-    pollInterval: 2e2,  // In milliseconds, min 15ms.
-    diffInterval: 30,  // In milliseconds.
+    pollInterval: 2e2,  // In milliseconds, min 15ms. Default: 100ms.
+    diffInterval: 30,  // In milliseconds. Default: 100ms.
 
-    // Update the store's time even if the polled time matches the monitored time.
+    // Update the store's time even if 
+    // the polled time matches the monitored time.
+    // Default: false.
     isForceUpdate: true,
-    isRepeat: false  // Control for looping.
+    isRepeat: false   // Control for looping. Default: false.
   });
 
 // Execute mutations on the Vuex store.
 let executor = StarkSequencer.execute({
-    init: { x: 0, y: 0 },  // The initial object state.
+    init: { x: 0, y: 0 },  // The initial object state. Default: {}.
 
     // Events sequence.
     events: [
@@ -48,9 +50,12 @@ let executor = StarkSequencer.execute({
       ...etc
     ],
     
-    // In milliseconds. Optional, min 15ms. Default = 15ms < min time between events / 2 < 150ms.
+    buffer: 50, // Number of buffered events. Default: 100.
+
+    // In milliseconds. Optional, min 15ms. 
+    // Default = 15ms < min time between events / 2 < 150ms.
     pollInterval: 2e2,
-    isRepeat: true  // Control for looping.
+    isRepeat: true  // Control for looping. Default: false.
   });
 ```
 
