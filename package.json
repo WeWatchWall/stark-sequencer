@@ -11,8 +11,11 @@
   ],
   "browser": "./browser.js",
   "scripts": {
-    "build:dev": "esbuild src/browser.ts --bundle --outfile=dist/browser.js",
-    "build:watch": "esbuild src/browser.ts --bundle --watch --outfile=dist/browser.js",
+    "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
+    "clean": "rm -rf dist build package",
+    "build-all": "yarn clean && yarn install",
+    "build:dev": "esbuild src/index.ts --bundle --outfile=dist/index.js",
+    "build:watch": "esbuild src/index.ts --bundle --watch --outfile=dist/index.js",
     "postinstall": "node build.js"
   },
   "devDependencies": {
