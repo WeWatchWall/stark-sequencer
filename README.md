@@ -1,4 +1,4 @@
-# Soft Sequencer in TypeScript
+# Soft Real-Time Sequencer in TypeScript
 
 [![Build and test status](https://github.com/WeWatchWall/stark-sequencer/workflows/Lint%20and%20test/badge.svg)](https://github.com/WeWatchWall/stark-sequencer/actions?query=workflow%3A%22Lint+and+test%22)
 
