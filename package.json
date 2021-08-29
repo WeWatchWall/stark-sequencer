@@ -1,6 +1,6 @@
 {
   "name": "stark-sequencer",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A scheduler and monitor for soft real-time as a TypeScript esm module.",
   "author": "Adrian Burlacu <adrian.burlacu@live.com>",
   "repository": {
@@ -14,13 +14,11 @@
     "timesync",
     "vuex"
   ],
-  "browser": "./browser.js",
+  "main": "dist/index.js",
   "scripts": {
     "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
     "clean": "rm -rf dist build package",
     "build-all": "yarn clean && yarn install",
-    "build:dev": "esbuild src/index.ts --bundle --outfile=dist/index.js",
-    "build:watch": "esbuild src/index.ts --bundle --watch --outfile=dist/index.js",
     "postinstall": "node build.js"
   },
   "devDependencies": {
