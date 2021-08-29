@@ -29,7 +29,11 @@ export class StarkSequencer {
         StarkSequencer.offsetPointer.numSamples = 1;
         StarkSequencer.offsetPointer.offset = offset;
         return;
-      }      
+      } else if (StarkSequencer.offsetPointer.numSamples === 4) {
+        StarkSequencer.offsetPointer.numSamples++;
+        StarkSequencer.offsetPointer.offset = offset;
+        return;
+      }
 
       let newVal =  StarkSequencer.offsetPointer.offset * StarkSequencer.offsetPointer.numSamples + offset;
       StarkSequencer.offsetPointer.numSamples++;
