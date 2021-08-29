@@ -16,6 +16,9 @@ export class StarkSequencer {
     ExecutorService.offsetPointer = StarkSequencer.offsetPointer;
     MonitorService.offsetPointer = StarkSequencer.offsetPointer;
     
+    StarkSequencer.executorService.init();
+    StarkSequencer.monitorService.init();
+
     if (!configArg.isSync) { return; }
 
     const timeSync = timesync.create({
@@ -44,9 +47,6 @@ export class StarkSequencer {
         timeSync.destroy();
       }
     });
-
-    StarkSequencer.executorService.init();
-    StarkSequencer.monitorService.init();
   }
 
   // Execute - managing the events based on time
