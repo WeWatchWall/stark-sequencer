@@ -8,7 +8,7 @@
     "url": "https://github.com/WeWatchWall/stark-sequencer.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://registry.npmjs.org/"
   },
   "license": "MIT",
   "keywords": [
