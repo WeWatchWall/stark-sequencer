@@ -1,11 +1,14 @@
 {
   "name": "stark-sequencer",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "A scheduler and monitor for soft real-time as a TypeScript esm module.",
   "author": "Adrian Burlacu <adrian.burlacu@live.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/WeWatchWall/stark-sequencer.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "license": "MIT",
   "keywords": [
