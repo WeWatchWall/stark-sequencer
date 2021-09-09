@@ -84,7 +84,7 @@ export class Monitor {
 
     this.interval = setInterval(loadInternal, this.argValid.pollInterval);
     
-    return this.state;
+    return this;
   }
 
   save() {

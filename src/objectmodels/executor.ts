@@ -123,7 +123,7 @@ export class Executor {
 
     this.interval = setInterval(poll, this.argValid.pollInterval);
 
-    return this.state;
+    return this;
   }
 
   loadPromises() {
