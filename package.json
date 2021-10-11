@@ -1,6 +1,6 @@
 {
   "name": "stark-sequencer",
-  "version": "1.0.16",
+  "version": "1.1.0",
   "description": "A scheduler and monitor for soft real-time as a TypeScript esm module.",
   "author": "Adrian Burlacu <adrian.burlacu@live.com>",
   "repository": {
@@ -23,13 +23,12 @@
     "clean": "rm -rf dist build package",
     "build-all": "yarn clean && yarn install",
     "postinstall": "node build.js",
-    "publish": "node publish.js" 
+    "publish": "node publish.js"
   },
   "devDependencies": {
     "@types/jest": "^26.0.21",
     "@typescript-eslint/eslint-plugin": "^4.19.0",
     "@typescript-eslint/parser": "^4.19.0",
-    "browser-env-vars": "^1.1.1",
     "esbuild": "^0.11.23",
     "eslint": "^7.22.0",
     "eslint-plugin-vue": "^7.17.0",
@@ -41,6 +40,7 @@
   },
   "dependencies": {
     "browser-assert": "^1.2.1",
+    "browser-env-vars": "^1.1.1",
     "events": "^3.3.0",
     "flat-promise": "^1.0.2",
     "lodash": "^4.17.21",
